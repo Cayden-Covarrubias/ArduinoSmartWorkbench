@@ -3,11 +3,11 @@
 int deathlight = 13; //output light for death
 int killlight = 12; //output light for killing an enemy
 //int highscore = 11; //output light for new high score
-int currentscore; //stores the current score
+int currentscore = 0; //stores the current score
 int prevscore = 0; //stores the previous score, indicates when you kill an enemy
 
 void setup() {
-  Serial.begin(115200); //baudrate between python and arduino needs to be the same
+  Serial.begin(9600); //baudrate between python and arduino needs to be the same
   pinMode(deathlight, OUTPUT);
   pinMode(killlight, OUTPUT);
   //pinMode(highscore, OUTPUT);
