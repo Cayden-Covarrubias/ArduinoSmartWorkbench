@@ -2,20 +2,18 @@
 
 int deathlight = 13; //output light for death
 int killlight = 12; //output light for killing an enemy
-int highscore = 11; //output light for new high score
+//int highscore = 11; //output light for new high score
 int currentscore; //stores the current score
-bool isHighscore = false; //tracks whether you have gotten a new highscore or not
-bool isDead = false; //tracks whether you have died or not
 int prevscore = 0; //stores the previous score, indicates when you kill an enemy
 
 void setup() {
   Serial.begin(115200); //baudrate between python and arduino needs to be the same
   pinMode(deathlight, OUTPUT);
   pinMode(killlight, OUTPUT);
-  pinMode(highscore, OUTPUT);
+  //pinMode(highscore, OUTPUT);
   digitalWrite(deathlight, LOW);
   digitalWrite(killlight, LOW);
-  digitalWrite(highscore, LOW);
+  //digitalWrite(highscore, LOW);
 
   Serial.setTimeout(1);
 }
@@ -28,19 +26,20 @@ void loop() {
     digitalWrite(killlight, HIGH);
     delay(100);
     digitalWrite(killlight, LOW);
+    prevscore=currentscore;
   }
-  if (isDead) {
+  if (prevscore > currentscore) {
     digitalWrite(deathlight, HIGH);
     delay(100);
     digitalWrite(deathlight, LOW);
-    isDead = false;
+    
   }
-  if (isHighscore) {
-    digitalWrite(highscore, HIGH);
-    delay(100);
-    digitalWrite(highscore, LOW);
-  }
-  isHighscore = false;
+  // if (isHighscore) {
+  //   digitalWrite(highscore, HIGH);
+  //   delay(100);
+  //   digitalWrite(highscore, LOW);
+  // }
+  // isHighscore = false;
 
 }
 
