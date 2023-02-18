@@ -24,15 +24,15 @@ void loop() {
   Serial.print("Current score: " + String(currentscore));
   if (currentscore > prevscore) {
     digitalWrite(killlight, HIGH);
-    delay(100);
+    delay(1000);
     digitalWrite(killlight, LOW);
     prevscore=currentscore;
   }
   if (prevscore > currentscore) {
     digitalWrite(deathlight, HIGH);
-    delay(100);
+    delay(1000);
     digitalWrite(deathlight, LOW);
-    
+    prevscore = 0;
   }
   // if (isHighscore) {
   //   digitalWrite(highscore, HIGH);
